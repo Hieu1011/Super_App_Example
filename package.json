@@ -1,0 +1,30 @@
+{
+  "name": "super-app-example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Hieu <blhieuofficial@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/host-app",
+    "packages/mini-app",
+    "packages/stream-app"
+  ],
+  "packageManager": "yarn@3.4.1",
+  "scripts": {
+    "bootstrap": "yarn && yarn workspaces foreach run bootstrap",
+    "start": "concurrently -P 'yarn:start:*(!standalone) {1}'",
+    "start:host-app": "yarn workspace HostApp run start",
+    "start:mini-app": "yarn workspace MiniApp run start",
+    "start:stream-app": "yarn workspace StreamApp run start",
+    "run:host-app:ios": "yarn workspace HostApp run ios",
+    "run:host-app:android": "yarn workspace HostApp run android",
+    "run:mini-app:ios": "yarn workspace MiniApp run ios",
+    "run:mini-app:android": "yarn workspace MiniApp run android",
+    "run:stream-app:ios": "yarn workspace StreamApp run ios",
+    "run:stream-app:android": "yarn workspace StreamApp run android"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
